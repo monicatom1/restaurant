@@ -1,0 +1,190 @@
+ *{
+    padding: 0;
+    margin:0;
+}
+body{
+    overflow-x: hidden;
+   
+}
+.navbar-nav{
+    justify-content: center;
+}   .card-img-container {
+    overflow: hidden;
+}
+
+.card-image {
+    transition: transform 0.3s ease-in-out;
+}
+
+.card-image:hover img {
+    transform: scale(1.9);
+}
+.word1 {
+    font-size: 36px;
+    font-family: 'Dancing Script', cursive;
+    
+
+}
+
+.word2 {
+    font-size: 26px;
+    font-family: 'Dancing Script', cursive;
+    
+}
+
+.my-button {
+
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Add transition for smooth effect */
+}
+
+/* Hover effect with zoom-in */
+.my-button:hover {
+    transform: scale(0.6);
+}
+
+
+/* image hover */
+.image-container {
+    
+    transition: transform 0.3s zoom-out;
+}
+
+.image-container:hover {
+    transform: scale(1.2); /* Adjust the scale factor for zoom level */
+}
+
+img {
+  
+    object-fit: cover;
+    transition: transform 0.3s zoom-out;
+}
+
+.image-container:hover img {
+    transform: scale(0.7); /* Adjust the scale factor for zoom level */
+}
+.hovers:hover {
+    transform: scale(1.1);
+    background-color: #000; 
+    color: white;
+
+}
+.map-container{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+  }
+  .map-container iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+  }
+  .carousel-prev-btn{
+    color: black;
+    background-color: #000;
+  }
+
+
+
+  .card-img-top {
+    
+    transition: transform 0.3s zoom-out;
+}
+
+.card-img-top:hover {
+    transform: scale(1.2); /* Adjust the scale factor for zoom level */
+}
+
+img {
+  
+    object-fit: cover;
+    transition: transform 0.3s zoom-out;
+}
+
+.card-img-top:hover img {
+    transform: scale(0.7); /* Adjust the scale factor for zoom level */
+}
+/* hhh */
+
+.vo {
+    
+    transition: transform 0.3s zoom-out;
+}
+
+.vo:hover {
+    transform: scale(1.2); /* Adjust the scale factor for zoom level */
+}
+
+img {
+  
+    object-fit: cover;
+    transition: transform 0.3s zoom-out;
+}
+
+.vo:hover img {
+    transform: scale(0.7); /* Adjust the scale factor for zoom level */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.booking-container {
+    height: 100vh;
+    background: url("https://imgs.search.brave.com/kxVVk99TMt6U2WgSHfnhshTsaplTBTAEbLfo61-FHAY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wNDcv/NTE5LzE2MS9zbWFs/bC9qdWljeS1oYW1i/dXJnZXItb24tYS1i/bGFjay1iYWNrZ3Jv/dW5kLXdpdGgtY29w/eS1zcGFjZS1oYW1i/dXJnZXItYmFubmVy/LWZyZWUtcGhvdG8u/anBn") no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.booking-box {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    width: 320px;
+    border-radius: 10px;
+    color: white;
+}
+
+.booking-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.booking-box input,
+.booking-box textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: none;
+    border-radius: 5px;
+}
+
+.booking-box textarea {
+    resize: none;
+    height: 70px;
+}
+
+.booking-box button {
+    width: 100%;
+    padding: 12px;
+    background-color: #8b0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.booking-box button:hover {
+    background-color: #a00000;
+}
+.booking-box input::placeholder,
+.booking-box textarea::placeholder {
+    color: #975c5c;
+}
