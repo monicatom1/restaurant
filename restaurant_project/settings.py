@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from pathlib import Path
 
 import os
+import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,12 +24,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3%0hfy7g1s=1=)n1!9*%5a2lyp5xh%90%qjxx05w(xc0_ablgx'
+# Read secret key from environment for production (set DJANGO_SECRET_KEY in Railway)
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-development-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['*']
+# Allow hosts from environment (comma-separated) or default to all during quick deploy
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '*').split(',')
 
 
 # Application definition
@@ -76,16 +79,24 @@ WSGI_APPLICATION = 'restaurant_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES={
-    'default':{
-        'ENGINE':'mysql.connector.django', 
-        'NAME':'restaurant_db',
-        'USER':'root',
-        'PASSWORD':'Monica@21',
-        'HOST':'localhost',
-        'PORT':'3306'
+# Database
+# Use DATABASE_URL env var when available (Railway provides it); otherwise fall back to local MySQL config
+DATABASE_URL = os.environ.get('DATABASE_URL')
+if DATABASE_URL:
+    DATABASES = {
+        'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600)
     }
-}
+else:
+    DATABASES={
+        'default':{
+            'ENGINE':'mysql.connector.django', 
+            'NAME':'restaurant_db',
+            'USER':'root',
+            'PASSWORD':'Monica@21',
+            'HOST':'localhost',
+            'PORT':'3306'
+        }
+    }
 
 
 # Password validation
@@ -124,3 +135,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+# WhiteNoise for serving static files in production
+MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
